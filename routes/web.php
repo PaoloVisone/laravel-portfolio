@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,4 +19,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth', 'verified'])
+    ->name("admin")
+    ->prefix("admin")
+    ->group(function () {
+        // Index
+        Route::get("/index", [DashboardController::class, 'index'])
+            ->name("index");
+
+        // Profile
+        Route::get("/profile", [DashboardController::class, 'profile'])
+            ->name("profile");
+    });
+
+
+require __DIR__ . '/auth.php';
