@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -19,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Get
 Route::middleware(['auth', 'verified'])
     ->name("admin")
     ->prefix("admin")
@@ -32,5 +34,7 @@ Route::middleware(['auth', 'verified'])
             ->name("profile");
     });
 
+// Post
+Route::resource('posts', PostController::class);
 
 require __DIR__ . '/auth.php';
