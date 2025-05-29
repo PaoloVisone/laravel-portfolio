@@ -11,7 +11,7 @@
     <h1>Titolo: {{$post->title}}</h1>
     <h2>Autore: {{$post->author}}</h2>
     <p>Catrgoria: {{$post->category}}</p>
-    <span>Contenuto: {{$post->content}}</span>
+    <a href="{{ route("posts.show", $post) }}">Visualizza</a>
 </div>
 
 @endforeach
