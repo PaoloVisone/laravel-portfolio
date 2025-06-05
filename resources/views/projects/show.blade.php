@@ -10,9 +10,6 @@
                 </div>
                 <div class="card-body p-4">
                     <div class="d-flex align-items-center mb-4">
-                        <div class="bg-light rounded-circle p-2 me-3">
-                            <i class="fas fa-building text-primary"></i>
-                        </div>
                         <div>
                             <small class="text-muted d-block">Cliente</small>
                             <h5 class="mb-0 fw-semibold">{{ $project->client }}</h5>
@@ -23,6 +20,15 @@
                         <span class="badge bg-primary fs-6 px-3 py-2">
                             {{ $project->type->name }}
                         </span>
+                    </div>
+                    <div class="mb-4">
+                        @if(count($project->technologies) > 0)
+                                  @foreach ($project->technologies as $technology)
+                                      <span class="badge bg-success fs-6 px-3 py-2">
+                                          {{ $technology->name }}
+                                      </span>
+                                  @endforeach                                  
+                             @endif
                     </div>
                     
                     <div class="border-start border-primary border-4 ps-3">

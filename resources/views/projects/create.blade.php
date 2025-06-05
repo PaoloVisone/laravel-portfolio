@@ -32,12 +32,33 @@
                                     Categoria
                                 </label>
                                 <select class="form-select form-select-lg" id="type_id" name="type_id" required>
-                                    <option value="">Seleziona categoria...</option>
-                                 @foreach ($types as $type)
-                                    <option value="{{ $type->id }}" {{ $project->$type_id == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
-                                 @endforeach
+                                    <option>Seleziona categoria...</option>
+                                     @foreach ($types as $type)
+                                    <option value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                                     @endforeach
                                 </select>
                             </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Tecnologie</label>
+                        <div class="card border-light">
+                            <div class="card-body p-3">
+                                @foreach ($technologies as $technology)
+                                    <div class="form-check mb-2">
+                                        <input 
+                                            class="form-check-input" 
+                                            type="checkbox" 
+                                            id="technology_{{ $technology->id }}" 
+                                            name="technologies[]" 
+                                            value="{{ $technology->id }}">
+                                            <label class="form-check-label" for="technology_{{ $technology->id }}">
+                                                {{ $technology->name }}
+                                            </label>
+                                         </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
 
                             <div class="mb-4">
                                 <label for="content" class="form-label fw-bold">
@@ -46,7 +67,6 @@
                                 <textarea class="form-control" id="content" name="content" rows="5" placeholder="Descrivi il progetto in dettaglio..." required></textarea>
                             </div>
 
-                            
                                 <button type="submit" class="btn btn-success btn-lg">
                                     Salva
                                 </button>

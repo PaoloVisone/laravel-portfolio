@@ -40,6 +40,28 @@
                                 </select>
                             </div>
 
+                            <div class="mb-3">
+                    <label class="form-label fw-bold">Tecnologie</label>
+                        <div class="card border-light">
+                            <div class="card-body p-3">
+                                @foreach ($technologies as $technology)
+                                    <div class="form-check mb-2">
+                                        <input 
+                                            class="form-check-input" 
+                                            type="checkbox" 
+                                            id="technology_{{ $technology->id }}" 
+                                            name="technologies[]" 
+                                            value="{{ $technology->id }}"
+                                            {{ $project->technologies->contains($technology->id) ? 'checked' : "" }}>
+                                            <label class="form-check-label" for="technology_{{ $technology->id }}">
+                                                {{ $technology->name }}
+                                            </label>
+                                         </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
                             <div class="mb-4">
                                 <label for="content" class="form-label fw-bold">
                                     Descrizione Progetto
