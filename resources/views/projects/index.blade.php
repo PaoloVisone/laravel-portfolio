@@ -16,7 +16,7 @@
         </div>
  
         <div class="card-footer text-body-secondary">
-            <a href="{{ route('projects.show', $project->id) }}" class="btn btn-primary">Dettagli</a>
+            <a href="{{ route('projects.show', $project) }}" class="btn btn-primary">Dettagli</a>
         </div>
     </div>
         @endforeach
