@@ -35,7 +35,7 @@
                                 <select class="form-select form-select-lg" id="type_id" name="type_id" required>
                                     <option value="">Seleziona categoria...</option>
                                     @foreach ($types as $type)
-                                    <option value="{{ $type }}" selected>{{ $type->name }}</option>
+                                    <option value="{{ $type->id }}" {{ $project->type_id == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -52,7 +52,6 @@
                                     Salva
                                 </button>
                             
-                        </form>
                     </div>
                 </div>
             </div>

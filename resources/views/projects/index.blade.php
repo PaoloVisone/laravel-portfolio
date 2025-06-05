@@ -9,7 +9,7 @@
         
     @foreach($projects as $project)
     <div class="card text-center">
-        <div class="card-header">{{ $project->client }} - {{ $project->type }}</div>
+        <div class="card-header">{{ $project->client }} - {{ $project->type->name }}</div>
   
         <div class="card-body">
             <h2 class="card-title">{{ $project->title }}</h2>
