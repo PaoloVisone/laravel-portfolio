@@ -21,7 +21,7 @@
                     
                     <div class="mb-4">
                         <span class="badge bg-primary fs-6 px-3 py-2">
-                            {{ $project->category }}
+                            {{ $project->type->name }}
                         </span>
                     </div>
                     

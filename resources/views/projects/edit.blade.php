@@ -29,17 +29,14 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="category" class="form-label fw-bold">
+                                <label for="type_id" class="form-label fw-bold">
                                     Categoria
                                 </label>
-                                <select class="form-select form-select-lg" id="category" name="category" required>
+                                <select class="form-select form-select-lg" id="type_id" name="type_id" required>
                                     <option value="">Seleziona categoria...</option>
-                                    <option value="Web Development">Sviluppo Web</option>
-                                    <option value="Mobile App">App Mobile</option>
-                                    <option value="UI/UX Design">Design UI/UX</option>
-                                    <option value="E-commerce">E-commerce</option>
-                                    <option value="Marketing">Marketing</option>
-                                    <option value="Branding">Branding</option>
+                                    @foreach ($types as $type)
+                                    <option value="{{ $type }}" selected>{{ $type->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
