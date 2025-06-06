@@ -5,9 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="card shadow-lg border-0">
-                <div class="card-header text-center py-4">
+                <div class="card-header text-center py-4 bg-primary">
                     <h1 class="mb-0 fw-bold">{{ $project->title }}</h1>
                 </div>
+                @if($project->image)
+                <div class="mb-3 ">
+                    <img src="{{ asset('storage/' . $project->image) }}" class="card-img-top" alt="...">
+                </div>
+                @endif
                 <div class="card-body p-4">
                     <div class="d-flex align-items-center mb-4">
                         <div>
@@ -41,7 +46,7 @@
                         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                           Elimina
                         </button>
-                        
+                        <a class="btn btn-outline-success" href="{{ route("projects.index") }}">Torna ai Progetti</a>
                     </div>
                 </div>
             </div>

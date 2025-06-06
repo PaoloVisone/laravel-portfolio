@@ -1,14 +1,14 @@
 @extends("layouts.projects")
 
 @section("content")
-<div class="container m-4">
-    <h1 class="text-center">I miei progetti</h1>
-    <div class="py-5">
-         <a class="btn btn-outline-success" href="{{ route("projects.create") }}">Aggiungi un progetto</a>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+         <h1 class="mb-0">I miei progetti</h1>
+         <a class="btn btn-outline-success" href="{{ route("projects.create") }}">Aggiungi progetto</a>
     </div>
-        
+         
     @foreach($projects as $project)
-    <div class="card text-center">
+    <div class="card text-center my-5">
         <div class="card-header">{{ $project->client }} - {{ $project->type->name }}</div>
   
         <div class="card-body">
