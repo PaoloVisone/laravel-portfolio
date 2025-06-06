@@ -9,25 +9,26 @@
                     <div class="card-header bg-warning text-white text-center py-4">
                          <h2>MODIFICA IL PROGETTO</h2>
                     </div>
-                    
+                    {{-- Form --}}
                     <div class="card-body p-4">
-                        <form action="{{ route("projects.update", $project) }}" method="POST">
+                        <form action="{{ route("projects.update", $project) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
+                            {{-- Title --}}
                             <div class="mb-3">
                                 <label for="title" class="form-label fw-bold">
                                     Titolo Progetto
                                 </label>
                                 <input type="text" class="form-control form-control-lg" id="title" name="title" value="{{ $project->title }}" placeholder="Progetto" required>
                             </div>
-
+{{-- Client --}}
                             <div class="mb-3">
                                 <label for="client" class="form-label fw-bold">
                                     Nome Cliente
                                 </label>
                                 <input type="text" class="form-control form-control-lg" id="client" name="client" value="{{ $project->client }}" placeholder="Cliente" required>
                             </div>
-
+{{-- Types --}}
                             <div class="mb-3">
                                 <label for="type_id" class="form-label fw-bold">
                                     Categoria
@@ -39,7 +40,7 @@
                                     @endforeach
                                 </select>
                             </div>
-
+{{-- Technologies --}}
                             <div class="mb-3">
                     <label class="form-label fw-bold">Tecnologie</label>
                         <div class="card border-light">
@@ -61,15 +62,27 @@
                             </div>
                         </div>
                     </div>
+{{-- image --}}
+                     <div class="mb-4">
+                        <label for="image">
+                            Immagine Progetto
+                        </label>
+                        <input type="file" id="image" name="image">
 
+                        @if($project->image)
+                            <div class="mb-3 w-25">
+                                <img src="{{ asset('storage/' . $project->image) }}" class="card-img-top" alt="...">
+                            </div>
+                        @endif
+                    </div>
+{{-- Description --}}
                             <div class="mb-4">
                                 <label for="content" class="form-label fw-bold">
                                     Descrizione Progetto
                                 </label>
                                 <textarea class="form-control" id="content" name="content" rows="5" placeholder="Descrivi il progetto in dettaglio..." required>{{ $project->content }}</textarea>
                             </div>
-
-                            
+{{-- Submit --}}
                                 <button type="submit" class="btn btn-warning btn-lg">
                                     Salva
                                 </button>
